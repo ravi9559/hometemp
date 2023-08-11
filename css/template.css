@@ -1,0 +1,45 @@
+.loginbtn,
+.joinbtn {
+  border-radius: 15px 0 !important;
+}
+
+.downloadSaveApp {
+  background-image: url("https://sd-web-images.s3-ap-southeast-2.amazonaws.com/cashback.png") !important;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+
+  color: rgb(17, 191, 25) !important;
+}
+
+.downloadSaveApp p {
+  color: rgb(17, 191, 25) !important;
+}
+
+.downloadDocketApp {
+  background-image: url("https://sd-web-images.s3-ap-southeast-2.amazonaws.com/home_phone.png") !important;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.footer-logo {
+  max-width: 30% !important;
+}
+
+.back-to-top-button {
+  bottom: 20px !important;
+  right: 20px !important;
+}
+
+.back-to-top-button.show {
+  display: block !important;
+}
+
+.logo {
+  max-width: 90% !important;
+}
+
+.facebookbtn {
+  background: #3b5998 !important;
+}
