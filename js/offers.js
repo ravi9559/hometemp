@@ -67,7 +67,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
       for (let i = 1; i <= totalPages; i++) {
         paginationHTML += `
-          <li class="page-item"><a class="page-link" href="#" onclick="handlePagination(${i})">${i}</a></li>
+          <li class="page-item ${i === currentPage ? 'active' : ''} "><a class="page-link text-dark" href="#" onclick="handlePagination(${i})">${i}</a></li>
         `;
       }
 

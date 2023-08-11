@@ -43,3 +43,10 @@
 .facebookbtn {
   background: #3b5998 !important;
 }
+
+
+.page-item.active .page-link {
+  color: #fff !important;
+  background-color: #EA0029 !important;
+  border-color: #EA0029;
+}
