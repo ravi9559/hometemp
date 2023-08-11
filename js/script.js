@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="col">
           
-          <a href="${window.location.origin}/offers.html?category=${encodeURIComponent(breed)}" class="btn btn-danger float-end">View more</a>
+          <a href="${window.location.origin}/index.html/offers.html?category=${encodeURIComponent(breed)}" class="btn btn-danger float-end">View more</a>
           </div>
         </div>
       </div>
