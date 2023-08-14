@@ -40,11 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="col">
           
-          <a href="${window.location.origin}/hometemp/offers.html?category=${encodeURIComponent(breed)}" class="btn btn-danger loginbtn float-end">View more</a>
+          <a href="${
+            window.location.origin
+          }/hometemp/offers.html?category=${encodeURIComponent(
+      breed
+    )}" class="btn btn-danger loginbtn float-end">View more</a>
           </div>
         </div>
       </div>
-      <div id="${breed}-slider" class="carousel slide" data-bs-ride="carousel">
+      <div id="${breed}-slider" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           ${generateCarouselItems(images)}
         </div>
@@ -69,16 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const isActive = i === 0 ? "active" : "";
 
       slideshowHTML += `
-            <div class="carousel-item ${isActive}">
+            <div class="carousel-item ${isActive}" data-bs-interval="false">
 
             <div class="card-group  mx-5 ">
+            
+            
         `;
 
       for (let j = i; j < i + 5 && j < maxImagesToShow; j++) {
         const imageSrc = images[j];
 
         slideshowHTML += `
-
+        
                     <div class="card me-3">
                         <img src="${imageSrc}" class="img-fluid" alt="Image ${
           j + 1
@@ -90,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             }.</p>
                         </div>
                     </div>
+                    
 
             `;
       }

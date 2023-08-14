@@ -43,13 +43,16 @@ const urlParams = new URLSearchParams(window.location.search);
 
         imageCardsHTML += `
           <div class="col">
+          <a class="page-link"  href="#" >
             <div class="card">
+
               <img src="${imageSrc}" class="card-img-top" alt="Image ${j + 1}" style="height: 300px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">Card ${j + 1} Title</h5>
                 <p class="card-text">Description for Card ${j + 1}.</p>
               </div>
             </div>
+            </a>
           </div>
         `;
       }
