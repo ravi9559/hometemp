@@ -106,3 +106,10 @@ const urlParams = new URLSearchParams(window.location.search);
         });
     }
   });
+
+
+  // Home url
+  document.getElementById('home').href = window.location.origin;
+
+ 
+ 
