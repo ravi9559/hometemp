@@ -1,30 +1,30 @@
 const urlParams = new URLSearchParams(window.location.search);
-  const breed = urlParams.get("category");
+  const offerCategory= urlParams.get("category");
   let currentPage = 1;
   let images = [];
   const imagesPerPage=10;
 
   document.addEventListener("DOMContentLoaded", () => {
-    const breedContainer = document.getElementById("breedImagesContainer");
+    const offerContainer = document.getElementById("offerCategoryContainer");
 
     fetchImages(currentPage);
 
-    function createBreedCard(images) {
-      const breedCard = document.createElement("div");
-      breedCard.className = "container mt-5";
+    function createOfferCard(images) {
+      const offerCard = document.createElement("div");
+      offerCard.className = "container mt-5";
 
       const startIndex = (currentPage - 1) * imagesPerPage;
       const endIndex = startIndex + imagesPerPage;
       const slicedImages = images.slice(startIndex, endIndex);
 
-      breedCard.innerHTML = `
+      offerCard.innerHTML = `
         <div class="row m-3"> 
           <div class="col">
-            <h3 class="text-capitalize">${breed}</h3>
+            <h3 class="text-capitalize">${offerCategory}</h3>
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-3">
-          ${generateImageCards(slicedImages)}
+          ${generateOfferCards(slicedImages)}
         </div>
         <div class="row m-3">
           <div class="col">
@@ -32,10 +32,10 @@ const urlParams = new URLSearchParams(window.location.search);
           </div>
         </div>
       `;
-      return breedCard;
+      return offerCard;
     }
 
-    function generateImageCards(images) {
+    function generateOfferCards(images) {
       let imageCardsHTML = "";
 
       for (let j = 0; j < images.length; j++) {
@@ -49,7 +49,7 @@ const urlParams = new URLSearchParams(window.location.search);
               <img src="${imageSrc}" class="card-img-top" alt="Image ${j + 1}" style="height: 300px; object-fit: cover;">
               <div class="card-body">
                 <h5 class="card-title">Card ${j + 1} Title</h5>
-                <p class="card-text">Description for Card ${j + 1}.</p>
+                <p class="card-text">Description for Card ${j + 1}. <span class=" float-end"><i class="far fa-fw fa-heart"></i></span></p>
               </div>
             </div>
             </a>
@@ -84,12 +84,12 @@ const urlParams = new URLSearchParams(window.location.search);
 
     window.handlePagination = function(page) {
       currentPage = page;
-      breedContainer.innerHTML = '';
-      breedContainer.appendChild(createBreedCard(images));
+      offerContainer.innerHTML = '';
+      offerContainer.appendChild(createOfferCard(images));
     };
 
     function fetchImages(page) {
-      fetch(`https://dog.ceo/api/breed/${breed}/images`)
+      fetch(`https://dog.ceo/api/breed/${offerCategory}/images`)
         .then((response) => response.json())
         .then((data) => {
           if (data.status !== "error") {
@@ -99,7 +99,7 @@ const urlParams = new URLSearchParams(window.location.search);
             handlePagination(page); // Display the specified page
           } else {
             console.error(
-              `Error fetching images for ${breed}:`,
+              `Error fetching images for ${offerCategory}:`,
               data.message
             );
           }

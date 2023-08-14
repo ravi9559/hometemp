@@ -1,68 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const breedContainer = document.getElementById("breedContainer");
+  const offerContainer = document.getElementById("offerContainer");
 
-  // Fetch breed list
+  // Fetch offer Category list
   fetch("https://dog.ceo/api/breeds/list/all")
     .then((response) => response.json())
     .then((data) => {
-      const breeds = Object.keys(data.message);
-      breeds.forEach((breed) => {
-        fetch(`https://dog.ceo/api/breed/${breed}/images`)
+      const offerCategory = Object.keys(data.message);
+      offerCategory.forEach((offer) => {
+        fetch(`https://dog.ceo/api/breed/${offer}/images`)
           .then((response) => response.json())
           .then((data) => {
             if (data.status !== 404) {
               const images = data.message.filter(
                 (image) => !image.includes("Not Found")
               );
-              const breedCard = createBreedCard(breed, images);
-              breedContainer.appendChild(breedCard);
+              const offerCard = createOfferCard(offer, images);
+              offerContainer.appendChild(offerCard);
             } else {
               console.error(
-                `Error fetching images for ${breed}:`,
+                `Error fetching images for ${offer}:`,
                 data.message
               );
             }
           })
           .catch((error) => {
-            console.error(`Error fetching images for ${breed}:`, error);
+            console.error(`Error fetching images for ${offer}:`, error);
           });
       });
     });
 
-  // Create breed card with name and images
-  function createBreedCard(breed, images) {
-    const breedCard = document.createElement("div");
-    breedCard.className = "container mt-5";
-    breedCard.innerHTML = `
+  // Create offer  card with name and images
+  function createOfferCard(offer, images) {
+    const offerCard = document.createElement("div");
+    offerCard.className = "container mt-5";
+    offerCard.innerHTML = `
       <div class="row m-3 px-5"> 
         <div class="col">
-          <h3 class="text-capitalize">${breed}</h3>
+          <h3 class="text-capitalize">${offer}</h3>
         </div>
         <div class="col">
           
           <a href="${
             window.location.origin
           }/hometemp/offers.html?category=${encodeURIComponent(
-      breed
+      offer
     )}" class="btn btn-danger loginbtn float-end">View more</a>
           </div>
         </div>
       </div>
-      <div id="${breed}-slider" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div id="${offer}-slider" class="carousel carousel-dark slide" data-bs-ride="carousel" >
         <div class="carousel-inner">
           ${generateCarouselItems(images)}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#${breed}-slider" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#${offer}-slider" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#${breed}-slider" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#${offer}-slider" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
     `;
-    return breedCard;
+    return offerCard;
   }
 
   function generateCarouselItems(images) {
@@ -93,7 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h5 class="card-title">Card ${j + 1} Title</h5>
                             <p class="card-text">Description for Card ${
                               j + 1
-                            }.</p>
+                            }. <span class=" float-end"><i class="far fa-fw fa-heart"></i></span></p>
+                            
                         </div>
                     </div>
                     
