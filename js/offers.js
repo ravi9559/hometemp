@@ -109,7 +109,21 @@ const urlParams = new URLSearchParams(window.location.search);
 
 
   // Home url
-  document.getElementById('home').href = window.location.hostname;
+  document.getElementById('home').href = window.location.origin;
+
+  /* back to top */
+
+window.addEventListener("scroll", function () {
+  var backToTopButton = document.getElementById("backToTopButton");
+  backToTopButton.classList.toggle("show", window.scrollY > 50);
+});
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
 
  
  
